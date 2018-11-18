@@ -11,12 +11,11 @@ import "math"
 type Kind int
 
 const (
-	// Pick values for the following identifiers used by the test program.
-	NaT = 0 // not a triangle
-	Equ = 1 // equilateral
-	Iso = 2 // isosceles
-	Sca = 3 // scalene
-	Deg = 4 // degenerate
+	NaT = iota // not a triangle
+	Equ // equilateral
+	Iso // isosceles
+	Sca // scalene
+	Deg // degenerate
 )
 
 // KindFromSides should have a comment documenting it.
