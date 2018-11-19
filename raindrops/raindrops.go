@@ -1,29 +1,26 @@
 // Package raindrops implements functions for translating to raindropese
 package raindrops
 
-import (
-	"strconv"
-	"strings"
-)
+import "strconv"
 
 // Convert changes an integer into the raindrop-speak equivalent
 func Convert(number int) string {
-	var parts []string
+	var translation string
 
 	if number%3 == 0 {
-		parts = append(parts, "Pling")
+		translation += "Pling"
 	}
 
 	if number%5 == 0 {
-		parts = append(parts, "Plang")
+		translation += "Plang"
 	}
 
 	if number%7 == 0 {
-		parts = append(parts, "Plong")
+		translation += "Plong"
 	}
 
-	if len(parts) > 0 {
-		return strings.Join(parts, "")
+	if len(translation) > 0 {
+		return translation
 	} else {
 		return strconv.Itoa(number)
 	}
