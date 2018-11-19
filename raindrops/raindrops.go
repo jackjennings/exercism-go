@@ -21,7 +21,7 @@ func Convert(number int) string {
 
 	if len(translation) > 0 {
 		return translation
-	} else {
-		return strconv.Itoa(number)
 	}
+
+	return strconv.Itoa(number)
 }
