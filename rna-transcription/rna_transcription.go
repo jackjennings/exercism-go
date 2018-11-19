@@ -1,3 +1,4 @@
+// Package strand implements functions for transcribing DNA strands
 package strand
 
 import "strings"
@@ -9,6 +10,7 @@ var ComplementTable = map[string]string{
 	"A": "U",
 }
 
+// ToRNA converts a DNS strand into the RNA compliment
 func ToRNA(dna string) string {
 	var nucleotides = strings.Split(dna, "")
 	var complement []string
