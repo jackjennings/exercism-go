@@ -1,4 +1,4 @@
-// Package raindrops implements functions for traslating to raindropese
+// Package raindrops implements functions for translating to raindropese
 package raindrops
 
 import (
