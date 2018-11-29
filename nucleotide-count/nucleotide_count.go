@@ -1,18 +1,13 @@
 // Package dna exports
 package dna
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
 // Histogram is a mapping from nucleotide to its count in given DNA.
 type Histogram map[rune]int
 
 // DNA is a list of nucleotides.
 type DNA string
-
-var nucleotides = "ACGT";
 
 // Counts generates a histogram of valid nucleotides in the given DNA.
 // Returns an error if d contains an invalid nucleotide.
@@ -29,7 +24,7 @@ func (d DNA) Counts() (Histogram, error) {
 	}
 
 	for _, nucleotide := range d {
-		if !strings.ContainsRune(nucleotides, nucleotide) {
+		if _, ok := h[nucleotide]; ok == false {
 			return nil, fmt.Errorf("Invalid DNA strand: %s", d)
 		}
 
