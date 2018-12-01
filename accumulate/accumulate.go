@@ -4,11 +4,10 @@ package accumulate
 // Accumulate transforms a collection of strings into a second collection,
 // with the supplied converter applied to each.
 func Accumulate(xs []string, converter func(string) string) []string {
-	length := len(xs)
-	ys := make([]string, length)
+	ys := make([]string, len(xs))
 
-	for i := 0; i < length; i++ {
-		ys[i] = converter(xs[i])
+	for i, x := range xs {
+		ys[i] = converter(x)
 	}
 
 	return ys
