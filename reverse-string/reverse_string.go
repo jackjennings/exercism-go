@@ -5,12 +5,12 @@ import "strings"
 
 // String reverses the order of the runes in a string
 func String(input string) string {
-	var output string
-	var sequence = strings.Split(input, "")
+	var b strings.Builder
 
-	for i := len(sequence) - 1; i >= 0; i-- {
-		output += sequence[i]
+	runes := []rune(input)
+	for i := len(runes) - 1; i >= 0; i-- {
+		b.WriteRune(runes[i])
 	}
 
-	return output
+	return b.String()
 }
