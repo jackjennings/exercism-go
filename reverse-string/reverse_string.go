@@ -7,6 +7,8 @@ import "strings"
 func String(input string) string {
 	var b strings.Builder
 
+	b.Grow(len(input))
+
 	runes := []rune(input)
 	for i := len(runes) - 1; i >= 0; i-- {
 		b.WriteRune(runes[i])
