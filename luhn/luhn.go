@@ -1,4 +1,4 @@
-// Pacakge luhn implements functions for working with the Luhn checksum algorithm
+// Package luhn implements functions for working with the Luhn checksum algorithm
 package luhn
 
 import (
