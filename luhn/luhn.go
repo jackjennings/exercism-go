@@ -13,9 +13,9 @@ func Valid(input string) bool {
 		return false
 	}
 
-	for i := length; i > 0; i-- {
+	for i := length - 1; i >= 0; i-- {
 		// Substracting the '0' rune gets the character code offset of subsequent numbers
-		digit := int(sequence[i-1] - '0')
+		digit := int(sequence[i] - '0')
 
 		// Anything outside of 0-9 is some other character
 		if digit > 9 || digit < 0 {
@@ -23,7 +23,7 @@ func Valid(input string) bool {
 		}
 
 		// Double every second digit, subtracting 9 for values greater than 9
-		sum += ((digit*(((length-i)%2)+1))-1)%9 + 1
+		sum += ((digit*(((length-i+1)%2)+1))-1)%9 + 1
 	}
 
 	return sum%10 == 0
