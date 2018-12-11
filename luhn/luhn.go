@@ -22,8 +22,14 @@ func Valid(input string) bool {
 			return false
 		}
 
-		// Double every second digit, subtracting 9 for values greater than 9
-		sum += ((digit*(((length-i+1)%2)+1))-1)%9 + 1
+		// Double every second digit
+		modifier := ((length - i + 1) % 2) + 1
+		modifiedDigit := digit * modifier
+
+		// Subtracting 9 for values greater than 9
+		boundedDigit := (modifiedDigit-1)%9 + 1
+
+		sum += boundedDigit
 	}
 
 	return sum%10 == 0
