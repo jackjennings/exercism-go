@@ -12,7 +12,7 @@ func Square(index int) (uint64, error) {
 	var total uint64 = 1
 
 	for n := 1; n < index; n++ {
-		total = total * 2
+		total = total << 1
 	}
 
 	return total, nil
