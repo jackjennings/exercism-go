@@ -23,7 +23,12 @@ func Total() uint64 {
 	var total uint64
 
 	for n := 1; n <= 64; n++ {
-		value, _ := Square(n)
+		value, err := Square(n)
+
+		if err != nil {
+			panic(err)
+		}
+
 		total += value
 	}
 
