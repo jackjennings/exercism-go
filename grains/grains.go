@@ -9,28 +9,10 @@ func Square(index int) (uint64, error) {
 		return 0, fmt.Errorf("Square number %d is invalid", index)
 	}
 
-	var total uint64 = 1
-
-	for n := 1; n < index; n++ {
-		total = total << 1
-	}
-
-	return total, nil
+	return 1 << uint64(index-1), nil
 }
 
 // Total returns the number of wheat grains on a (very large) chess board
 func Total() uint64 {
-	var total uint64
-
-	for n := 1; n <= 64; n++ {
-		value, err := Square(n)
-
-		if err != nil {
-			panic(err)
-		}
-
-		total += value
-	}
-
-	return total
+	return uint64(1<<64 - 1)
 }
