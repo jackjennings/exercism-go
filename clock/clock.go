@@ -1,38 +1,47 @@
+// Package clock implements interfaces for dealing with wall-clock time
 package clock
 
-import (
-	"fmt"
-	"math"
-)
+import "fmt"
 
-type Clock struct {
-	hour   int
-	minute int
-}
+// Clock represents the state of a wall clock
+type Clock int
 
+// New creates a new 24-hour Clock given a number of hours and minutes
 func New(hours, minutes int) Clock {
-	hour := int(math.Floor(float64(hours*60+minutes)/60)) % 24
-	minute := minutes % 60
-
-	if hour < 0 {
-		hour += 24
-	}
-
-	if minute < 0 {
-		minute += 60
-	}
-
-	return Clock{hour, minute}
+	return Clock(clamp24hours(hours*60 + minutes))
 }
 
+// String converts a clock into a zero-padded time in the format HH:MM
 func (c Clock) String() string {
-	return fmt.Sprintf("%02d:%02d", c.hour, c.minute)
+	return fmt.Sprintf("%02d:%02d", c.Hours(), c.Minutes())
 }
 
+// Add adds a number of minutes to a clock
 func (c Clock) Add(minutes int) Clock {
-	return New(c.hour, c.minute+minutes)
+	return New(0, int(c)+minutes)
 }
 
+// Subtract removes a number of minutes from a clock
 func (c Clock) Subtract(minutes int) Clock {
-	return New(c.hour, c.minute-minutes)
+	return New(0, int(c)-minutes)
+}
+
+// Hours returns the number of hours on a clock
+func (c Clock) Hours() int {
+	return int(c) / 60
+}
+
+// Minutes returns the position of the minute hand on a clock
+func (c Clock) Minutes() int {
+	return int(c) % 60
+}
+
+func clamp24hours(minutes int) int {
+	total := minutes % 1440
+
+	if total < 0 {
+		total += 1440
+	}
+
+	return total
 }
